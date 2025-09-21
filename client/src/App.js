@@ -1,22 +1,26 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+const BACKEND_URL = 'https://yt-m4a-web-downloader.onrender.com'; // Render backend URL
+
 function App() {
   const [url, setUrl] = useState('');
   const [folder, setFolder] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // Set custom download folder
   const setDownloadFolder = async () => {
     if (!folder) return alert('Enter folder path');
     try {
-      await axios.post('http://localhost:5000/set-download-folder', { folder });
+      await axios.post(`${BACKEND_URL}/set-download-folder`, { folder });
       setMessage(`✅ Download folder set to: ${folder}`);
-    } catch {
-      setMessage('❌ Failed to set folder');
+    } catch (err) {
+      setMessage('❌ Failed to set folder: ' + (err.response?.data || err.message));
     }
   };
 
+  // Download single video or playlist
   const downloadAudio = async () => {
     if (!url) return alert('Enter URL');
 
@@ -24,7 +28,7 @@ function App() {
     setMessage('Starting download...');
 
     try {
-      const res = await axios.post('http://localhost:5000/download-audio', { url });
+      const res = await axios.post(`${BACKEND_URL}/download-audio`, { url });
       let msg = '';
       res.data.results.forEach((r) => {
         if (r.skipped) {
@@ -44,7 +48,7 @@ function App() {
 
   return (
     <div style={{ fontFamily: 'Arial', maxWidth: '700px', margin: '50px auto', textAlign: 'center' }}>
-      <h1>WE Down_load Web – M4A Downloader</h1>
+      <h1>SnapTube Web – M4A Downloader</h1>
 
       <input
         type="text"
@@ -56,7 +60,7 @@ function App() {
 
       <input
         type="text"
-        placeholder={`Custom download folder (default: Music folder)`}
+        placeholder="Custom download folder (default: Music folder)"
         value={folder}
         onChange={(e) => setFolder(e.target.value)}
         style={{ width: '100%', padding: '10px', margin: '10px 0' }}
