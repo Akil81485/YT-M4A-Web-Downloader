@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/YT-M4A-Web-Downloader/static/css/main.e6c13ad2.css",
+    "main.js": "/YT-M4A-Web-Downloader/static/js/main.aab8893c.js",
+    "static/js/488.ed7e7edd.chunk.js": "/YT-M4A-Web-Downloader/static/js/488.ed7e7edd.chunk.js",
+    "index.html": "/YT-M4A-Web-Downloader/index.html",
+    "main.e6c13ad2.css.map": "/YT-M4A-Web-Downloader/static/css/main.e6c13ad2.css.map",
+    "main.aab8893c.js.map": "/YT-M4A-Web-Downloader/static/js/main.aab8893c.js.map",
+    "488.ed7e7edd.chunk.js.map": "/YT-M4A-Web-Downloader/static/js/488.ed7e7edd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.aab8893c.js"
+  ]
+}
