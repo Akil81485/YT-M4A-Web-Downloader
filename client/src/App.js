@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-// Use your Render backend URL here
-const BACKEND_URL = 'https://yt-m4a-web-downloader.onrender.com';
+const BACKEND_URL = 'https://yt-m4a-web-downloader.onrender.com'; // Your Render backend
 
 function App() {
   const [url, setUrl] = useState('');
@@ -10,7 +9,6 @@ function App() {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Set custom download folder
   const setDownloadFolder = async () => {
     if (!folder) return alert('Enter folder path');
     try {
@@ -21,10 +19,8 @@ function App() {
     }
   };
 
-  // Download single video or playlist
   const downloadAudio = async () => {
     if (!url) return alert('Enter URL');
-
     setLoading(true);
     setMessage('Starting download...');
 
@@ -72,6 +68,7 @@ function App() {
       </button>
 
       <br />
+
       <button
         onClick={downloadAudio}
         disabled={loading}
