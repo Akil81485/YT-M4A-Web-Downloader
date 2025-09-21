@@ -63,7 +63,7 @@ async function downloadPlaylist(url) {
                 extractAudio: true,
                 audioFormat: 'm4a',
                 output: path.join(DOWNLOAD_DIR, '%(title)s.%(ext)s'),
-                ignoreErrors: true, // continue even if this video fails
+                ignoreErrors: true,
             });
 
             results.push({ skipped: false, title, file: filePath });
@@ -108,7 +108,9 @@ app.post('/download-audio', async (req, res) => {
     }
 });
 
-app.listen(5000, () => {
-    console.log(`M4A Downloader running at http://localhost:5000`);
+// Use dynamic port for Render deployment
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`M4A Downloader running at port ${PORT}`);
     console.log(`Files will be saved in: ${DOWNLOAD_DIR}`);
 });
